@@ -1,0 +1,76 @@
+graph = {
+        'A':['B', 'C', [5,2]],
+        'B':['A', 'D', 'E', [5,5, 1]],
+        'C':['A', 'F', 'G', [2, 5, 4]],
+        'D':['B', [5]],
+        'E':['B', [1]],
+        'F':['C', [5]],
+        'G':['G', [4]],
+        }
+
+route = []
+visited = []
+sortedWeight = []
+sortedPoint = []
+
+"""
+
+sortedWeight = sorted(graph['A'][len(graph['A'])-1])
+
+
+for i in sortedWeight:
+   sortedPoint.append(graph['A'][graph['A'][len(graph['A'])-1].index(i)])
+
+
+print(sortedWeight)
+print(sortedPoint)
+
+for i in sortedPoint:
+    print(i)
+
+"""
+
+route=[]
+visited=[]
+
+
+def ucs(start,destination):
+     route.append(start)
+     while len(route)>0:
+         vertex=route.pop(0)
+         if vertex not in visited:
+             visited.append(vertex)
+             
+             
+             sortedWeight = sorted(graph[vertex][len(graph[vertex])-1])
+
+             for i in sortedWeight:
+                 sortedPoint.append(graph[vertex][graph[vertex][len(graph[vertex])-1].index(i)])
+             
+                
+             route.extend(set(sortedPoint)-set(visited))
+         if visited.__contains__(destination):
+            break
+     return visited
+
+
+
+suru = input("Starting Point:  ")
+if suru not in graph:
+    print(suru+"does not exist\n\nStarting Point:  ");
+    suru = input("Starting Point:  ")
+    
+ses = input("\n\nEnding Point:  ")
+if ses not in graph:
+    print(ses+"does not exist\n\nEnding Point Point:  ");
+    ses = input()
+
+v=ucs(suru, ses)
+
+print("The Shortest Path from "+suru+" To "+ses+":  ")
+
+j=0
+for i in v:
+    print(v[j])
+    j+=1
+
