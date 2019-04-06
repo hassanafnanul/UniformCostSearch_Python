@@ -13,22 +13,6 @@ visited = []
 sortedWeight = []
 sortedPoint = []
 
-"""
-
-sortedWeight = sorted(graph['A'][len(graph['A'])-1])
-
-
-for i in sortedWeight:
-   sortedPoint.append(graph['A'][graph['A'][len(graph['A'])-1].index(i)])
-
-
-print(sortedWeight)
-print(sortedPoint)
-
-for i in sortedPoint:
-    print(i)
-
-"""
 
 route=[]
 visited=[]
